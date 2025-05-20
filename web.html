@@ -674,6 +674,143 @@
                 grid-template-columns: 1fr;
             }
         }
+        /* Hero Slider Styles */
+.hero {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.hero-slider {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1s ease, visibility 1s ease;
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.slide-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    text-align: center;
+    color: white;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.slider-nav {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.slider-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.slider-dot.active {
+    background-color: white;
+    transform: scale(1.2);
+}
+
+.slider-arrows {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 10;
+}
+
+.slider-arrow {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.slider-arrow:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Responsive Slider Styles */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+    }
+    
+    .slider-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .slider-dot {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .slider-arrows {
+        padding: 0 10px;
+    }
+    
+    .slider-arrow {
+        width: 35px;
+        height: 35px;
+    }
+}
     </style>
 </head>
 <body>
@@ -681,7 +818,7 @@
     <header id="header">
         <div class="container nav-container">
             <a href="#" class="logo">
-                <img src="/api/placeholder/40/40" alt="PT Gatra Wastu Cipta Logo">
+                <img src="images/logo.jpg" alt="PT Gatra Wastu Cipta Logo">
                 <h1>Gatra Wastu Cipta</h1>
             </a>
             
@@ -701,13 +838,76 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container hero-content" data-aos="fade-up">
-            <h1>Wujudkan Visi Arsitektur Anda Bersama Kami</h1>
-            <p>PT Gatra Wastu Cipta adalah perusahaan konstruksi dan arsitektur terkemuka yang menghadirkan solusi desain inovatif dan konstruksi berkualitas tinggi</p>
-            <div class="hero-btns">
-                <a href="#portfolio" class="btn btn-primary">Lihat Portofolio</a>
-                <a href="#contact" class="btn btn-outline" style="background-color: transparent; color: white; border-color: white;">Hubungi Kami</a>
+     <section id="home" class="hero">
+        <div class="hero-slider">
+            <!-- Slide 1 -->
+            <div class="slide active" style="background-image: url('images/image1.jpg')">
+                <div class="slide-overlay"></div>
+                <div class="container hero-content" data-aos="fade-up">
+                    <h1>Wujudkan Visi Arsitektur Anda Bersama Kami</h1>
+                    <p>PT Gatra Wastu Cipta adalah perusahaan konstruksi dan arsitektur terkemuka yang menghadirkan solusi desain inovatif dan konstruksi berkualitas tinggi</p>
+                    <div class="hero-btns">
+                        <a href="#portfolio" class="btn btn-primary">Lihat Portofolio</a>
+                        <a href="#contact" class="btn btn-outline" style="background-color: transparent; color: white; border-color: white;">Hubungi Kami</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 2 -->
+            <div class="slide" style="background-image: url('images/image2.jpg')">
+                <div class="slide-overlay"></div>
+                <div class="container hero-content" data-aos="fade-up">
+                    <h1>Keunggulan dalam Setiap Proyek Konstruksi</h1>
+                    <p>Kami mengedepankan kualitas, inovasi, dan kepuasan klien dalam setiap proyek yang kami kerjakan</p>
+                    <div class="hero-btns">
+                        <a href="#portfolio" class="btn btn-primary">Lihat Portofolio</a>
+                        <a href="#contact" class="btn btn-outline" style="background-color: transparent; color: white; border-color: white;">Hubungi Kami</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 3 -->
+            <div class="slide" style="background-image: url('images/image3.jpg')">
+                <div class="slide-overlay"></div>
+                <div class="container hero-content" data-aos="fade-up">
+                    <h1>Solusi Konstruksi Modern dan Berkelanjutan</h1>
+                    <p>PT Gatra Wastu Cipta berkomitmen menghadirkan solusi konstruksi yang ramah lingkungan dan berkelanjutan</p>
+                    <div class="hero-btns">
+                        <a href="#portfolio" class="btn btn-primary">Lihat Portofolio</a>
+                        <a href="#contact" class="btn btn-outline" style="background-color: transparent; color: white; border-color: white;">Hubungi Kami</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 4 -->
+            <div class="slide" style="background-image: url('images/image4.jpg')">
+                <div class="slide-overlay"></div>
+                <div class="container hero-content" data-aos="fade-up">
+                    <h1>Membangun Masa Depan yang Lebih Baik</h1>
+                    <p>Dengan pengalaman 15+ tahun, kami siap merealisasikan proyek konstruksi dan arsitektur terbaik untuk Anda</p>
+                    <div class="hero-btns">
+                        <a href="#portfolio" class="btn btn-primary">Lihat Portofolio</a>
+                        <a href="#contact" class="btn btn-outline" style="background-color: transparent; color: white; border-color: white;">Hubungi Kami</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slider Navigation Dots -->
+            <div class="slider-nav">
+                <div class="slider-dot active" data-slide="0"></div>
+                <div class="slider-dot" data-slide="1"></div>
+                <div class="slider-dot" data-slide="2"></div>
+                <div class="slider-dot" data-slide="3"></div>
+            </div>
+            
+            <!-- Slider Navigation Arrows -->
+            <div class="slider-arrows">
+                <div class="slider-arrow prev-slide">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <div class="slider-arrow next-slide">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
             </div>
         </div>
     </section>
@@ -722,7 +922,7 @@
             
             <div class="about-content">
                 <div class="about-image" data-aos="fade-right">
-                    <img src="/api/placeholder/600/400" alt="PT Gatra Wastu Cipta Office">
+                    <img src="images/image3.jpg" alt="PT Gatra Wastu Cipta Office">
                 </div>
                 
                 <div class="about-text" data-aos="fade-left">
@@ -730,6 +930,25 @@
                     <p>PT Gatra Wastu Cipta berdiri sebagai perusahaan konstruksi dan arsitektur yang berkomitmen untuk memberikan layanan berkualitas tinggi dalam perencanaan, desain, dan pembangunan.</p>
                     <p>Dengan pengalaman bertahun-tahun di industri, kami telah berhasil menyelesaikan berbagai proyek prestisius mulai dari bangunan komersial, residensial, hingga infrastruktur publik.</p>
                     <p>Visi kami adalah menjadi pemimpin dalam industri konstruksi dan arsitektur yang dikenal karena keunggulan, inovasi, dan komitmen terhadap keberlanjutan lingkungan.</p>
+                    
+                    <h3>Keunggulan PT GATRA WASTU CIPTA</h3>
+                    <ul style="list-style-type: none; padding-left: 0; margin-bottom: 1.5rem;">
+                        <li style="margin-bottom: 0.75rem;">
+                            <strong>Tim Profesional</strong> - PT Gatra Wastu Cipta memiliki tim yang berpengalaman dan ahli di bidang konstruksi.
+                        </li>
+                        <li style="margin-bottom: 0.75rem;">
+                            <strong>Teknologi Terkini</strong> - Perusahaan ini menggunakan teknologi konstruksi terkini untuk memastikan efisiensi dan presisi dalam pekerjaan.
+                        </li>
+                        <li style="margin-bottom: 0.75rem;">
+                            <strong>Integritas dan Keamanan</strong> - Integritas, keamanan, dan kepuasan pelanggan menjadi fokus utama dalam setiap proyek.
+                        </li>
+                        <li style="margin-bottom: 0.75rem;">
+                            <strong>Budaya Kerja Inklusif</strong> - PT Gatra Wastu Cipta mendorong budaya kerja yang inklusif, kolaboratif, dan berorientasi pada inovasi.
+                        </li>
+                        <li style="margin-bottom: 0.75rem;">
+                            <strong>Kemitraan Strategis</strong> - Perusahaan ini menjalin kemitraan strategis dengan pemasok dan mitra bisnis untuk memastikan kualitas dan efisiensi dalam setiap proyek.
+                        </li>
+                    </ul>
                     
                     <div class="stats">
                         <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
@@ -819,7 +1038,7 @@
             
             <div class="portfolio-grid">
                 <div class="portfolio-item commercial" data-aos="fade-up" data-aos-delay="100">
-                    <img src="/api/placeholder/400/300" alt="Commercial Project" class="portfolio-img">
+                    <img src="images/image1.jpg" alt="Commercial Project" class="portfolio-img">
                     <div class="portfolio-overlay">
                         <h4>Grand Mall Surabaya</h4>
                         <p>Pembangunan pusat perbelanjaan modern di jantung kota Surabaya (2023)</p>
@@ -828,7 +1047,7 @@
                 </div>
                 
                 <div class="portfolio-item residential" data-aos="fade-up" data-aos-delay="200">
-                    <img src="/api/placeholder/400/300" alt="Residential Project" class="portfolio-img">
+                    <img src="images/image2.jpg" alt="Residential Project" class="portfolio-img">
                     <div class="portfolio-overlay">
                         <h4>Green Residence Jakarta</h4>
                         <p>Kompleks perumahan ramah lingkungan dengan 50 unit di Jakarta Selatan (2022)</p>
@@ -837,7 +1056,7 @@
                 </div>
                 
                 <div class="portfolio-item infrastructure" data-aos="fade-up" data-aos-delay="300">
-                    <img src="/api/placeholder/400/300" alt="Infrastructure Project" class="portfolio-img">
+                    <img src="images/image3.jpg" alt="Infrastructure Project" class="portfolio-img">
                     <div class="portfolio-overlay">
                         <h4>Jembatan Cisadane</h4>
                         <p>Pembangunan jembatan penghubung dengan panjang 500m di Tangerang (2021)</p>
@@ -846,7 +1065,7 @@
                 </div>
                 
                 <div class="portfolio-item commercial" data-aos="fade-up" data-aos-delay="400">
-                    <img src="/api/placeholder/400/300" alt="Commercial Project" class="portfolio-img">
+                    <img src="images/image4.jpg" alt="Commercial Project" class="portfolio-img">
                     <div class="portfolio-overlay">
                         <h4>Gedung Perkantoran Menara Cakrawala</h4>
                         <p>Gedung perkantoran 25 lantai di kawasan bisnis Jakarta (2023)</p>
@@ -855,7 +1074,7 @@
                 </div>
                 
                 <div class="portfolio-item residential" data-aos="fade-up" data-aos-delay="500">
-                    <img src="/api/placeholder/400/300" alt="Residential Project" class="portfolio-img">
+                    <img src="images/image5.jpg" alt="Residential Project" class="portfolio-img">
                     <div class="portfolio-overlay">
                         <h4>Apartemen Blue Horizon</h4>
                         <p>Kompleks apartemen mewah dengan fasilitas lengkap di Bandung (2022)</p>
@@ -864,7 +1083,16 @@
                 </div>
                 
                 <div class="portfolio-item infrastructure" data-aos="fade-up" data-aos-delay="600">
-                    <img src="/api/placeholder/400/300" alt="Infrastructure Project" class="portfolio-img">
+                    <img src="images/image6.jpg" alt="Infrastructure Project" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h4>Taman Kota Semarang</h4>
+                        <p>Pengembangan taman kota seluas 10 hektar dengan fasilitas rekreasi lengkap (2023)</p>
+                        <a href="#" class="btn btn-outline" style="border-color: white; color: white;">Detail Proyek</a>
+                    </div>
+                </div>
+
+                <div class="portfolio-item infrastructure" data-aos="fade-up" data-aos-delay="600">
+                    <img src="images/image7.jpg" alt="Infrastructure Project" class="portfolio-img">
                     <div class="portfolio-overlay">
                         <h4>Taman Kota Semarang</h4>
                         <p>Pengembangan taman kota seluas 10 hektar dengan fasilitas rekreasi lengkap (2023)</p>
@@ -918,7 +1146,7 @@
                         </div>
                         <div class="contact-details">
                             <h4>Alamat</h4>
-                            <p>Jl. Gatot Subroto No. 123, Jakarta Selatan, Indonesia</p>
+                            <p>Jl. Raya Tuban - Semarang No.Km. 23, Karangdowo, Socorejo, Kec. Jenu, Kabupaten Tuban, Jawa Timur.</p>
                         </div>
                     </div>
                     
@@ -953,7 +1181,7 @@
                     </div>
                     
                     <div style="width: 100%; height: 250px; background-color: #e5e7eb; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-top: 1rem;">
-                        <p style="color: #64748b;">Google Maps akan ditampilkan di sini</p>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.844497200446!2d111.903004!3d-6.788769399999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e77a751bfc8ee83%3A0x4de99f075b9993db!2sPT%20GATRA%20WASTU%20CIPTA!5e0!3m2!1sid!2sid!4v1747626517348!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
                 
@@ -1045,8 +1273,7 @@
         </div>
     </footer>
 
-    <!-- JS Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
         // Initialize AOS
         AOS.init({
@@ -1064,6 +1291,171 @@
                 header.classList.remove('scrolled');
             }
         });
+
+        // Hero Slider Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.slider-dot');
+    const prevBtn = document.querySelector('.prev-slide');
+    const nextBtn = document.querySelector('.next-slide');
+    let currentSlide = 0;
+    let slideInterval;
+    let isTransitioning = false;
+    
+    // Function to show a specific slide
+    function showSlide(index) {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        
+        // Hide all slides
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+        
+        // Show the selected slide
+        slides[index].classList.add('active');
+        dots[index].classList.add('active');
+        
+        // Update current slide index
+        currentSlide = index;
+        
+        // Reset transition lock after animation completes
+        setTimeout(() => {
+            isTransitioning = false;
+        }, 1000);
+    }
+    
+    // Next slide function
+    function nextSlide() {
+        let nextIndex = currentSlide + 1;
+        if (nextIndex >= slides.length) {
+            nextIndex = 0;
+        }
+        showSlide(nextIndex);
+    }
+    
+    // Previous slide function
+    function prevSlide() {
+        let prevIndex = currentSlide - 1;
+        if (prevIndex < 0) {
+            prevIndex = slides.length - 1;
+        }
+        showSlide(prevIndex);
+    }
+    
+    // Set up automatic slide changing
+    function startSlideshow() {
+        slideInterval = setInterval(nextSlide, 6000); // Change slide every 6 seconds
+    }
+    
+    // Stop automatic slide changing
+    function stopSlideshow() {
+        clearInterval(slideInterval);
+    }
+    
+    // Event listeners for slider navigation
+    if (prevBtn) {
+        prevBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            stopSlideshow();
+            prevSlide();
+            startSlideshow();
+        });
+    }
+    
+    if (nextBtn) {
+        nextBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            stopSlideshow();
+            nextSlide();
+            startSlideshow();
+        });
+    }
+    
+    // Add click event to dots
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (currentSlide !== index) {
+                stopSlideshow();
+                showSlide(index);
+                startSlideshow();
+            }
+        });
+    });
+    
+    // Add swipe functionality for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    const heroSection = document.querySelector('.hero');
+    
+    if (heroSection) {
+        heroSection.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }, false);
+        
+        heroSection.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, false);
+    }
+    
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        if (touchEndX < touchStartX - swipeThreshold) {
+            // Swipe left - next slide
+            stopSlideshow();
+            nextSlide();
+            startSlideshow();
+        }
+        if (touchEndX > touchStartX + swipeThreshold) {
+            // Swipe right - previous slide
+            stopSlideshow();
+            prevSlide();
+            startSlideshow();
+        }
+    }
+    
+    // Handle visibility change to pause/resume slideshow
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            stopSlideshow();
+        } else {
+            startSlideshow();
+        }
+    });
+    
+    // Initialize slider with first slide active
+    if (slides.length > 0) {
+        showSlide(0);
+        startSlideshow();
+    }
+    
+    // Add keyboard navigation
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowLeft') {
+            stopSlideshow();
+            prevSlide();
+            startSlideshow();
+        } else if (e.key === 'ArrowRight') {
+            stopSlideshow();
+            nextSlide();
+            startSlideshow();
+        }
+    });
+    
+    // Pause slideshow on hover
+    const heroSlider = document.querySelector('.hero-slider');
+    if (heroSlider) {
+        heroSlider.addEventListener('mouseenter', function() {
+            stopSlideshow();
+        });
+        
+        heroSlider.addEventListener('mouseleave', function() {
+            startSlideshow();
+        });
+    }
+});
         
         // Mobile Navigation Toggle
         const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
@@ -1081,6 +1473,81 @@
                 icon.classList.add('fa-bars');
             }
         });
+        
+        // Hero Slider Functionality
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.slider-dot');
+        const prevBtn = document.querySelector('.prev-slide');
+        const nextBtn = document.querySelector('.next-slide');
+        let currentSlide = 0;
+        let slideInterval;
+        
+        // Function to show a specific slide
+        function showSlide(index) {
+            // Hide all slides
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            // Show the selected slide
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+            
+            // Update current slide index
+            currentSlide = index;
+        }
+        
+        // Next slide function
+        function nextSlide() {
+            let nextIndex = currentSlide + 1;
+            if (nextIndex >= slides.length) {
+                nextIndex = 0;
+            }
+            showSlide(nextIndex);
+        }
+        
+        // Previous slide function
+        function prevSlide() {
+            let prevIndex = currentSlide - 1;
+            if (prevIndex < 0) {
+                prevIndex = slides.length - 1;
+            }
+            showSlide(prevIndex);
+        }
+        
+        // Set up automatic slide changing
+        function startSlideshow() {
+            slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+        }
+        
+        // Stop automatic slide changing
+        function stopSlideshow() {
+            clearInterval(slideInterval);
+        }
+        
+        // Event listeners for slider navigation
+        prevBtn.addEventListener('click', function() {
+            stopSlideshow();
+            prevSlide();
+            startSlideshow();
+        });
+        
+        nextBtn.addEventListener('click', function() {
+            stopSlideshow();
+            nextSlide();
+            startSlideshow();
+        });
+        
+        // Add click event to dots
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', function() {
+                stopSlideshow();
+                showSlide(index);
+                startSlideshow();
+            });
+        });
+        
+        // Start the slideshow
+        startSlideshow();
         
         // Smooth Scrolling for Navigation Links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1135,72 +1602,6 @@
                 }
             });
         });
-        
-        // Portfolio Filtering
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const portfolioItems = document.querySelectorAll('.portfolio-item');
-        
-        filterButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                // Update active button
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active');
-                
-                const filterValue = this.getAttribute('data-filter');
-                
-                portfolioItems.forEach(item => {
-                    if (filterValue === 'all' || item.classList.contains(filterValue)) {
-                        item.style.display = 'block';
-                        setTimeout(() => {
-                            item.style.opacity = '1';
-                        }, 50);
-                    } else {
-                        item.style.opacity = '0';
-                        setTimeout(() => {
-                            item.style.display = 'none';
-                        }, 300);
-                    }
-                });
-            });
-        });
-        
-        // Testimonials Slider
-        const testimonialDots = document.querySelectorAll('.testimonial-dot');
-        
-        testimonialDots.forEach((dot, index) => {
-            dot.addEventListener('click', function() {
-                // Reset all dots
-                testimonialDots.forEach(d => d.classList.remove('active'));
-                
-                // Activate current dot
-                this.classList.add('active');
-                
-                // Show corresponding testimonial
-                // This would be expanded for actual testimonial switching
-            });
-        });
-        
-        // Form Submission
-        const contactForm = document.getElementById('contactForm');
-        
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Basic form validation demonstration
-                const name = document.getElementById('name').value;
-                const email = document.getElementById('email').value;
-                const message = document.getElementById('message').value;
-                
-                if (name && email && message) {
-                    // Here you would normally send the form data to a server
-                    alert('Terima kasih! Pesan Anda telah terkirim.');
-                    contactForm.reset();
-                } else {
-                    alert('Silakan lengkapi semua kolom yang wajib diisi.');
-                }
-            });
-        }
     </script>
-</body>
+    </body>
 </html>
